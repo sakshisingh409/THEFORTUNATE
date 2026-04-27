@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import { Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import {
   CalendarPlus,
@@ -41,7 +42,7 @@ type FormState = {
 
 type FormErrors = Partial<Record<keyof FormState, string>>
 
-export default function EventRegisterPage() {
+function EventRegisterContent() {
   const searchParams = useSearchParams()
   const eventTitle = useMemo(() => searchParams.get("event") ?? "Upcoming event", [searchParams])
 
@@ -559,3 +560,10 @@ export default function EventRegisterPage() {
   )
 }
 
+export default function EventRegisterPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <EventRegisterContent />
+    </Suspense>
+  )
+}

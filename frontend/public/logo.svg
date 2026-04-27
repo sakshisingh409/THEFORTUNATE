@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <!-- Outer circle -->
+  <circle cx="400" cy="400" r="320" stroke="#1a4d2e" stroke-width="30" fill="none"/>
+  
+  <!-- Top arch -->
+  <path d="M 200 300 Q 400 100 600 300" stroke="#1a4d2e" stroke-width="30" fill="none" stroke-linecap="round"/>
+  
+  <!-- Heart shape -->
+  <path d="M 320 350 C 320 320 345 295 370 295 C 390 295 405 310 420 325 C 435 310 450 295 470 295 C 495 295 520 320 520 350 C 520 390 420 480 420 480 C 420 480 320 390 320 350 Z" fill="none" stroke="#1a4d2e" stroke-width="20" stroke-linejoin="round"/>
+  
+  <!-- Hands holding -->
+  <!-- Left hand -->
+  <path d="M 280 420 L 240 440 M 280 420 L 260 450 M 280 420 L 270 460" stroke="#1a4d2e" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Right hand -->
+  <path d="M 560 420 L 600 440 M 560 420 L 580 450 M 560 420 L 570 460" stroke="#1a4d2e" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Text -->
+  <text x="520" y="320" font-family="Arial, sans-serif" font-size="48" font-weight="bold" letter-spacing="8" fill="#1a4d2e">
+    THE
+  </text>
+  <text x="520" y="375" font-family="Arial, sans-serif" font-size="48" font-weight="bold" letter-spacing="8" fill="#1a4d2e">
+    FORTUNATES
+  </text>
+</svg>

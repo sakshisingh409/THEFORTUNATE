@@ -1,3 +1,4 @@
+"use client"
 import { ScrollProgress } from "@/components/scroll-progress"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
@@ -14,7 +15,7 @@ import { NewsletterSection } from "@/components/newsletter-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 
-export default function Page() {
+export default function Home() {
   return (
     <main>
       <ScrollProgress />

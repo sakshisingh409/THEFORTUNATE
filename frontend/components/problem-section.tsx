@@ -34,7 +34,7 @@ export function ProblemSection() {
 
           <div className={`relative overflow-hidden rounded-2xl transition-all duration-700 delay-200 ${isInView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
             <img
-              src="/images/problem.jpg"
+              src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070&auto=format&fit=crop"
               alt="A child writing on a small chalkboard, representing the struggle for education access"
               className="h-[400px] w-full object-cover"
             />

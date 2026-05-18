@@ -5,7 +5,7 @@ import { useInView } from "@/hooks/use-in-view"
 
 const stories = [
   {
-    image: "/images/story-1.jpg",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop",
     name: "Priya Sharma",
     age: "14",
     quote: "I never thought I would go to school. Now I dream of becoming a doctor and helping my village.",
@@ -13,7 +13,7 @@ const stories = [
     after: "Top of her class, now preparing for science college entrance exams.",
   },
   {
-    image: "/images/story-2.jpg",
+    image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=2071&auto=format&fit=crop",
     name: "Lakshmi Devi",
     age: "38",
     quote: "The tailoring program gave me more than a skill. It gave me my independence and my voice.",

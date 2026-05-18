@@ -68,7 +68,7 @@ export default function EventsPage() {
       {/* Hero */}
       <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-primary">
         <div className="absolute inset-0 opacity-20">
-          <Image src="/images/hero.jpg" alt="" fill className="object-cover" priority />
+          <Image src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" alt="" fill className="object-cover" priority />
         </div>
         <div ref={heroRef} className="relative z-10 mx-auto max-w-4xl px-6 py-32 text-center">
           <p className={`text-sm font-semibold uppercase tracking-[0.25em] text-primary-foreground/70 transition-all duration-700 ${heroVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>

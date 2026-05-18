@@ -14,35 +14,35 @@ const programs = [
     title: "Education",
     description: "Quality learning programs for children and adults, from primary education to vocational training and digital literacy. We run learning centers, after-school programs, and scholarship initiatives.",
     stats: "50,000+ students",
-    image: "/images/story-1.jpg",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop",
   },
   {
     icon: HeartPulse,
     title: "Healthcare",
     description: "Community health initiatives including mobile clinics, preventive care, maternal health programs, and mental wellness support. We bring medical access to the most remote villages.",
     stats: "30,000+ check-ups",
-    image: "/images/problem.jpg",
+    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070&auto=format&fit=crop",
   },
   {
     icon: Users,
     title: "Women Empowerment",
     description: "Skill-building, microfinance, and leadership programs that help women become agents of change. From tailoring to digital skills, we create pathways to independence.",
     stats: "8,000+ women trained",
-    image: "/images/story-2.jpg",
+    image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=2071&auto=format&fit=crop",
   },
   {
     icon: Leaf,
     title: "Environment",
     description: "Sustainable farming, clean water access, reforestation projects, and environmental awareness campaigns. We protect the planet while uplifting communities.",
     stats: "15,000+ trees planted",
-    image: "/images/hero.jpg",
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop",
   },
   {
     icon: Wrench,
     title: "Skill Development",
     description: "Job training, apprenticeships, and entrepreneurship programs designed to create self-sufficient livelihoods. We partner with local businesses to ensure real job placement.",
     stats: "12,000+ trained",
-    image: "/images/problem.jpg",
+    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070&auto=format&fit=crop",
   },
 ]
 
@@ -57,7 +57,7 @@ export default function ProgramsPage() {
       {/* Hero */}
       <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-primary">
         <div className="absolute inset-0 opacity-20">
-          <Image src="/images/hero.jpg" alt="" fill className="object-cover" priority />
+          <Image src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" alt="" fill className="object-cover" priority />
         </div>
         <div ref={heroRef} className="relative z-10 mx-auto max-w-4xl px-6 py-32 text-center">
           <p className={`text-sm font-semibold uppercase tracking-[0.25em] text-primary-foreground/70 transition-all duration-700 ${heroVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>

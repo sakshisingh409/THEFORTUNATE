@@ -18,7 +18,7 @@ export function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[2500ms] ease-out"
         style={{
-          backgroundImage: "url('/images/hero.jpg')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop')",
           transform: visible ? "scale(1)" : "scale(1.15)",
         }}
       />

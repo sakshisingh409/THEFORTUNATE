@@ -12,7 +12,7 @@ import { useInView } from "@/hooks/use-in-view"
 import Image from "next/image"
 
 const contactInfo = [
-  { icon: MapPin, label: "Address", value: "42 Gandhi Nagar, Sector 12, New Delhi 110001, India" },
+  { icon: MapPin, label: "Address", value: "5/5/2 Kaibarta Para Lane, Shalimar, Howrah - 711103" },
   { icon: Phone, label: "Phone", value: "+91 98765 43210" },
   { icon: Mail, label: "Email", value: "hello@thefortunates.org" },
 ]
@@ -73,7 +73,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="relative flex min-h-[50vh] items-center justify-center overflow-hidden bg-primary">
         <div className="absolute inset-0 opacity-20">
-          <Image src="/images/hero.jpg" alt="" fill className="object-cover" priority />
+          <Image src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" alt="" fill className="object-cover" priority />
         </div>
         <div ref={heroRef} className="relative z-10 mx-auto max-w-4xl px-6 py-32 text-center">
           <p className={`text-sm font-semibold uppercase tracking-[0.25em] text-primary-foreground/70 transition-all duration-700 ${heroVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>

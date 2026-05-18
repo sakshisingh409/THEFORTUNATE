@@ -13,7 +13,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Address",
-    value: "42 Gandhi Nagar, Sector 12, New Delhi 110001, India",
+    value: "5/5/2 Kaibarta Para Lane, Shalimar, Howrah - 711103",
   },
   {
     icon: Phone,

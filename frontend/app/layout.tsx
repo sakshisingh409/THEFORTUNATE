@@ -1,11 +1,11 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { DM_Sans, Playfair_Display } from 'next/font/google'
+import { Inter, Outfit } from 'next/font/google'
 
 import './globals.css'
 
-const _dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' })
-const _playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
+const _inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
+const _outfit = Outfit({ subsets: ['latin'], variable: '--font-heading' })
 
 export const metadata: Metadata = {
   title: 'The Fortunates | Breaking the Cycle of Poverty',
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${_dmSans.variable} ${_playfair.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${_inter.variable} ${_outfit.variable} font-sans antialiased`}>{children}</body>
     </html>
   )
 }

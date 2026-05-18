@@ -1,164 +1,141 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef } from "react"
-import { Menu, X } from "lucide-react"
-import Image from "next/image"
+import { useState, useEffect } from "react"
+import { Menu, X, HandHeart, ChevronRight } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-const menuItems = [
+const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Impact", href: "/impact" },
   { label: "Programs", href: "/programs" },
   { label: "Stories", href: "/stories" },
   { label: "Events", href: "/events" },
-  { label: "Contact", href: "/contact" },
-  { label: "Volunteer", href: "/volunteer" },
-  { label: "Donate Now", href: "/donate" },
 ]
 
 export function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [itemsVisible, setItemsVisible] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Close mobile menu on route change
   useEffect(() => {
-    if (menuOpen) {
-      const timer = setTimeout(() => setItemsVisible(true), 50)
-      return () => clearTimeout(timer)
-    } else {
-      setItemsVisible(false)
-    }
-  }, [menuOpen])
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        const button = event.target as Element
-        if (!button.closest('button[aria-label*="menu"]')) {
-          closeMenu()
-        }
-      }
-    }
-
-    if (menuOpen) {
-      document.addEventListener("mousedown", handleClickOutside)
-      return () => document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [menuOpen])
-
-  const closeMenu = useCallback(() => {
-    setItemsVisible(false)
-    setTimeout(() => setMenuOpen(false), 200)
-  }, [])
+    setMobileMenuOpen(false)
+  }, [pathname])
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-foreground/70 backdrop-blur-lg shadow-lg"
-            : "bg-transparent"
+          scrolled ? "bg-background/90 backdrop-blur-md shadow-sm py-3 border-b border-border/50" : "bg-transparent py-5"
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-          {/* Logo and Brand */}
-          <Link href="/" className="relative z-50 flex items-center gap-2 group">
-            <div className="relative h-8 w-8 sm:h-10 sm:w-10 overflow-hidden transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-              <Image
-                src="/images/logo.png"
-                alt="The Fortunates logo"
-                fill
-                className="object-contain"
-                priority
-              />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="group flex items-center gap-3 z-50 relative">
+            <div className={`flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3 shadow-lg ${
+              scrolled ? "bg-primary text-primary-foreground" : "bg-primary text-primary-foreground"
+            }`}>
+              <HandHeart className="h-6 w-6" />
             </div>
-            <span className={`font-serif text-sm sm:text-xl font-bold transition-colors duration-300 hidden sm:inline`}>
+            <span className={`font-serif text-xl font-bold tracking-tight transition-colors duration-300 ${
+              scrolled || mobileMenuOpen ? "text-foreground" : "text-primary-foreground"
+            } group-hover:text-primary`}>
               The Fortunates
             </span>
           </Link>
 
-          {/* Hamburger Menu Button */}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (pathname !== "/" && link.href !== "/" && pathname?.startsWith(link.href))
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-bold tracking-wide transition-all duration-300 hover:text-primary ${
+                    scrolled 
+                      ? isActive ? "text-primary" : "text-foreground/70"
+                      : isActive ? "text-primary-foreground" : "text-primary-foreground/80 hover:text-primary-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
+          </nav>
+
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-4">
+            <Link 
+              href="/donate" 
+              className="inline-flex h-11 items-center justify-center rounded-full bg-accent px-6 text-sm font-bold text-accent-foreground shadow-lg transition-all hover:bg-accent/90 hover:scale-105 hover:shadow-xl"
+            >
+              Donate Now
+            </Link>
+          </div>
+
+          {/* Mobile Menu Toggle */}
           <button
-            type="button"
-            className="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-300 hover:bg-primary-foreground/10"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className={`relative z-50 md:hidden p-2 -mr-2 transition-colors duration-300 ${
+              scrolled || mobileMenuOpen ? "text-foreground" : "text-primary-foreground"
+            }`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
           >
-            <div className="relative h-5 w-6">
-              <span
-                className={`absolute left-0 h-0.5 w-6 bg-primary-foreground transition-all duration-300 ease-in-out ${
-                  menuOpen ? "top-2.5 rotate-45" : "top-0 rotate-0"
-                }`}
-              />
-              <span
-                className={`absolute left-0 top-2.5 h-0.5 w-6 bg-primary-foreground transition-all duration-300 ease-in-out ${
-                  menuOpen ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"
-                }`}
-              />
-              <span
-                className={`absolute left-0 h-0.5 w-6 bg-primary-foreground transition-all duration-300 ease-in-out ${
-                  menuOpen ? "top-2.5 -rotate-45" : "top-5 rotate-0"
-                }`}
-              />
-            </div>
+            {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
           </button>
-        </nav>
+        </div>
       </header>
 
-      {/* Compact Dropdown Menu */}
-      <div
-        ref={menuRef}
-        className={`fixed top-16 right-4 z-40 w-72 rounded-lg shadow-2xl transition-all duration-200 ease-out origin-top-right ${
-          menuOpen
-            ? "pointer-events-auto scale-100 opacity-100"
-            : "pointer-events-none scale-95 opacity-0"
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transition-all duration-500 ease-in-out md:hidden flex flex-col pt-24 pb-8 px-6 ${
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        style={{
-          background: "rgba(255, 255, 255, 0.95)",
-          backdropFilter: "blur(12px)",
-        }}
       >
-        <nav className="flex flex-col py-2">
-          {menuItems.map((item, i) => (
+        <div className="flex flex-col gap-6 mt-8">
+          {navLinks.map((link, i) => (
             <Link
-              key={item.href}
-              href={item.href}
-              onClick={closeMenu}
-              className={`px-4 py-3 text-sm font-medium transition-all duration-200 border-b border-foreground/5 last:border-b-0 hover:bg-primary/5 ${
-                itemsVisible
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-4 opacity-0"
-              } ${
-                item.label === "Donate Now"
-                  ? "text-accent font-semibold hover:bg-accent/10"
-                  : "text-foreground hover:text-primary"
+              key={link.href}
+              href={link.href}
+              className={`flex items-center justify-between border-b border-border/50 pb-4 text-2xl font-serif font-medium transition-all duration-500 ${
+                mobileMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
               }`}
-              style={{
-                transitionDelay: itemsVisible ? `${i * 40}ms` : "0ms",
-              }}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
-              {item.label}
+              <span className={pathname === link.href ? "text-primary" : "text-foreground"}>
+                {link.label}
+              </span>
+              <ChevronRight className={`h-6 w-6 ${pathname === link.href ? "text-primary" : "text-muted-foreground/50"}`} />
             </Link>
           ))}
-        </nav>
+        </div>
+        <div 
+          className={`mt-auto transition-all duration-500 delay-300 flex flex-col gap-4 ${
+            mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          <Link 
+            href="/contact" 
+            className="flex h-14 w-full items-center justify-center rounded-xl border border-border bg-card text-lg font-bold text-foreground shadow-sm"
+          >
+            Contact Us
+          </Link>
+          <Link 
+            href="/donate" 
+            className="flex h-14 w-full items-center justify-center rounded-xl bg-accent text-lg font-bold text-accent-foreground shadow-xl"
+          >
+            Donate Now
+          </Link>
+        </div>
       </div>
-
-      {/* Backdrop for menu */}
-      {menuOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-transparent"
-          onClick={closeMenu}
-          aria-hidden="true"
-        />
-      )}
     </>
   )
 }

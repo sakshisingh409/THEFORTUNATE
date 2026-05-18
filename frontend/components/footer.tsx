@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail } from "lucide-react"
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, HandHeart } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
 
 const quickLinks = [
@@ -11,6 +11,7 @@ const quickLinks = [
   { label: "Impact Stories", href: "/stories" },
   { label: "Events", href: "/events" },
   { label: "Contact", href: "/contact" },
+  { label: "FAQ", href: "/faq" },
 ]
 
 const programLinks = [
@@ -66,12 +67,9 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative h-10 w-10 overflow-hidden flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
-                <Image
-                  src="/images/logo.png"
-                  alt="The Fortunates logo"
-                  fill
-                  className="object-contain"
-                />
+                <div className="absolute inset-0 flex items-center justify-center bg-background rounded-lg text-foreground">
+                  <HandHeart className="h-6 w-6" />
+                </div>
               </div>
               <span className="font-serif text-lg sm:text-xl font-bold text-background transition-colors duration-300 group-hover:text-accent">
                 The Fortunates
@@ -80,9 +78,7 @@ export function Footer() {
             <p className="mt-4 text-xs sm:text-sm leading-relaxed text-background/60">
               Breaking the cycle of poverty through education, health, and sustainable development. Registered under the Indian Trusts Act.
             </p>
-            <p className="mt-4 text-xs text-background/40">
-              Reg. No: NGO/2024/DEL/001234
-            </p>
+
           </div>
 
           <div>
@@ -154,12 +150,12 @@ export function Footer() {
             {"© 2026 The Fortunates. All rights reserved."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-            <a href="#" className="text-xs sm:text-sm text-background/40 transition-colors duration-300 hover:text-background">
+            <Link href="/privacy" className="text-xs sm:text-sm text-background/40 transition-colors duration-300 hover:text-background">
               Privacy Policy
-            </a>
-            <a href="#" className="text-xs sm:text-sm text-background/40 transition-colors duration-300 hover:text-background">
+            </Link>
+            <Link href="/terms" className="text-xs sm:text-sm text-background/40 transition-colors duration-300 hover:text-background">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

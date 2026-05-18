@@ -8,7 +8,7 @@ import Image from "next/image"
 
 const stories = [
   {
-    image: "/images/story-1.jpg",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop",
     name: "Priya Sharma",
     age: "14",
     program: "Education",
@@ -18,7 +18,7 @@ const stories = [
     fullStory: "Priya grew up in a small farming village where girls rarely attended school. When The Fortunates opened a learning center nearby, her parents were hesitant but agreed to let her attend. Within a year, she was reading fluently. Now at 14, she tops her class and dreams of becoming a doctor to serve her community.",
   },
   {
-    image: "/images/story-2.jpg",
+    image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=2071&auto=format&fit=crop",
     name: "Lakshmi Devi",
     age: "38",
     program: "Women Empowerment",
@@ -28,7 +28,7 @@ const stories = [
     fullStory: "Lakshmi spent 20 years as a daily wage laborer, earning barely enough to feed her family. Through our vocational training program, she learned tailoring and business management. Today, she runs a successful tailoring shop in her village, employs three other women, and is a respected voice in her community.",
   },
   {
-    image: "/images/problem.jpg",
+    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070&auto=format&fit=crop",
     name: "Rajesh Kumar",
     age: "22",
     program: "Skill Development",
@@ -50,7 +50,7 @@ export default function StoriesPage() {
       {/* Hero */}
       <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-primary">
         <div className="absolute inset-0 opacity-20">
-          <Image src="/images/story-2.jpg" alt="" fill className="object-cover" priority />
+          <Image src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=2071&auto=format&fit=crop" alt="" fill className="object-cover" priority />
         </div>
         <div ref={heroRef} className="relative z-10 mx-auto max-w-4xl px-6 py-32 text-center">
           <p className={`text-sm font-semibold uppercase tracking-[0.25em] text-primary-foreground/70 transition-all duration-700 ${heroVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
